@@ -36,15 +36,18 @@ Before you make any changes, commit the original version of the assignment files
 
 Step 2: Watch the tests fail
 ----------------------------
-Install the required packages for the assignments.
-The following commands assume you are using Ubuntu (Linux):
+Install the required packages for the assignments:
 
-	$ sudo apt install python3 python3-pip
     $ pip3 install --user --upgrade pytest pycodestyle
 
-pip3 uses the directory ~/.local/bin/ to install commands; if running
-"pycodestyle" from the command line does not work, you need to add this
-directory to the search path:
+If you don't have pip3, install it as follows (assuming you use Ubuntu):
+
+	$ sudo add-apt-repository universe
+	$ sudo apt update
+	$ sudo apt install python3-pip
+
+"pip3 install --user" uses the directory ~/.local/bin/ to install commands;
+you need to add this directory to the search path:
 
     $ echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
     $ source .bashrc
@@ -59,6 +62,11 @@ You should see the output from Python running a number of tests, and they all
 fail. Your task will be to satisfy the requirements checked by the tests until
 they all succeed.
 
+NB: pytest should use Python 3 (the version is reported at the top of the output).
+If running "pytest" uses Python 2, you will run into problems. In that case,
+run pytest as follows as a workaround:
+
+	$ python3 -m pytest
 
 Step 3: Satisfy the requirements
 --------------------------------

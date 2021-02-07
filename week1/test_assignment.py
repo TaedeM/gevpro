@@ -2,7 +2,7 @@ import os
 import re
 import json
 import pytest
-
+import pets
 STUDENT_NUMBER_PATTERN = re.compile(r's\d{7}$')
 
 
@@ -26,6 +26,8 @@ class TestJSON:
         match = STUDENT_NUMBER_PATTERN.match(data['Student number'])
         assert match, ('Value for Student number must be a lower-case s '
                        'followed by seven digits')
+        
+        
 
     def test_workgroup(self, data):
         assert 'Workgroup' in data, 'Workgroup property is missing'
@@ -49,3 +51,8 @@ class TestText:
         with open('me.txt') as f:
             text = f.read()
         assert text.strip(), 'me.txt is empty'
+
+class TestPets:
+    def test_cat(self):
+        Pet = pets.Dog('Pablo')
+        assert Pet.sound(), 'Animal does not have a sound'
